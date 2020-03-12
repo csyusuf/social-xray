@@ -18,6 +18,6 @@ namespace SocialXray.Models
 
         public string Test { get; set; }
 
-        public IEnumerable<SelectListItem> KeywordsPopularity { get; set; }
+        public IEnumerable<Tuple<string, int>> KeywordsPopularity { get; set; }
     }
 }

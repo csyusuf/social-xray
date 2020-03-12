@@ -12,9 +12,9 @@ namespace SocialXray.Controllers
         public ActionResult Index()
         {
             var keywords = new[]
-           {
-                new SelectListItem { Value = "2000", Text = "pepsi" },
-                new SelectListItem { Value = "100", Text = "coca-cola" },
+            {
+                new Tuple<string, int>("pepsi", 2000),
+                new Tuple<string, int>("coca-cola", 1000)
             };
 
             var model = new ReportViewModels
