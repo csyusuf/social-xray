@@ -26,7 +26,6 @@
         };
 
         var chart = new google.visualization.LineChart(document.getElementById('linechart'));
-
         chart.draw(data, options);
     }
 
@@ -37,35 +36,42 @@
 
 <script type="text/javascript">
    google.charts.load('current', {packages: ['corechart', 'bar']});
-    google.charts.setOnLoadCallback(drawBasic);
+   google.charts.setOnLoadCallback(drawBasic);
 
-function drawBasic() {
-
-      var data = new google.visualization.DataTable();
+   function drawBasic() {
+        var data = new google.visualization.DataTable();
         data.addColumn('string', 'Date');
         data.addColumn('number', '@Model.Keyword1');
         data.addColumn('number', '@Model.Keyword2');
-
-     var entries = "@Html.Raw(Model.KeywordsPopularityLineChart)";
+        
+        var entries = "@Html.Raw(Model.KeywordsPopularityLineChart)";
         entries = "[" + entries + "]";
         console.log(entries);
         var keywordsPopularity = eval(entries);
         console.log(keywordsPopularity);
-       // var data = google.visualization.arrayToDataTable(keywordsPopularity);
+        var data = google.visualization.arrayToDataTable(keywordsPopularity);
 
+        /*
         var options = {
-          title: 'Number of Twits vs Date',
+          title: 'Number of Tweets vs Date',
           hAxis: {
             title: 'Date',
-            format: 'DD MM, YYYY'
+            format: 'mm/dd/yyyy'
           },
           vAxis: {
-            title: 'Number of twits'
+            title: 'Number of tweets'
           }
+        };
+        */
+
+        var options = {
+            chart: {
+                title: 'Tweets by date'
+            }
         };
 
         var materialChart = new google.charts.Bar(document.getElementById('chart_div'));
-        materialChart.draw(data, options);
+        materialChart.draw(data, google.charts.Bar.convertOptions(options));
       };
 </script>
 <div class="jumbotron">

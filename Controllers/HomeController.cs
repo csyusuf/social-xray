@@ -105,7 +105,8 @@ namespace SocialXray.Controllers
                 {
                     chartResults += ",";
                 }
-                chartResults += ("[{v: " + $"'{key:d}'" + "}," + $"{keyword1[key]}, {keyword2[key]}]");
+                //chartResults += ("[{v: " + $"'{key:d}'" + ", f: " + $"'1000'" + "}," + $"{keyword1[key]}, {keyword2[key]}]");
+                chartResults += $"['{key:d}', {keyword1[key]}, {keyword2[key]}]";
             }
             return chartResults;
         }
