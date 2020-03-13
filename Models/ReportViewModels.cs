@@ -19,5 +19,6 @@ namespace SocialXray.Models
         public string Test { get; set; }
 
         public string KeywordsPopularity { get; set; }
+        public string KeywordsPopularityLineChart { get; set; }
     }
 }
