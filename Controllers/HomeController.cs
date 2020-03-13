@@ -66,6 +66,14 @@ namespace SocialXray.Controllers
             string chartResults = $"['Date', '{twit_keywor1}', '{twit_keywor2}']";
             var dateKeys1 = keyword1.Keys.ToList();
 
+            foreach (var key in keyword2.Keys)
+            {
+                if (!dateKeys1.Contains(key))
+                {
+                    dateKeys1.Add(key);
+                }
+            }
+
             dateKeys1.Sort();
 
             foreach (var key in dateKeys1)
@@ -74,7 +82,7 @@ namespace SocialXray.Controllers
                 {
                     chartResults += ",";
                 }
-                chartResults += ($"['{key:d}', {keyword1[key]}, {keyword2[key]}]");
+                chartResults += ($"['{key:d}', {(keyword1.Keys.Contains(key) ? keyword1[key] : 0)}, {(keyword2.Keys.Contains(key) ? keyword2[key] : 0)}]");
             }
 
             /*
@@ -106,7 +114,7 @@ namespace SocialXray.Controllers
                     chartResults += ",";
                 }
                 //chartResults += ("[{v: " + $"'{key:d}'" + ", f: " + $"'1000'" + "}," + $"{keyword1[key]}, {keyword2[key]}]");
-                chartResults += $"['{key:d}', {keyword1[key]}, {keyword2[key]}]";
+                chartResults += $"['{key:d}', {(keyword1.Keys.Contains(key) ? keyword1[key] : 0)}, {(keyword2.Keys.Contains(key) ? keyword2[key] : 0)}]";
             }
             return chartResults;
         }
